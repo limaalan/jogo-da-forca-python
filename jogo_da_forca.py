@@ -37,22 +37,26 @@ def jogo(palavra,vidas):
     while ( corretos  < (len (palavra)) and vidas >0):
         imprime_jogo(chutes,palavra,vidas)
         chute = input("Digite uma letra :").lower()
-        #Caso o jogador já deu esse palpite
-        if ( chute in chutes ):
-            print("Você já deu esse palpite!")
+        if (chute.isalpha() and len(chute)==1):
+        
+            #Caso o jogador já deu esse palpite
+            if ( chute in chutes ):
+                print("Você já deu esse palpite!")
 
-        #Caso contrário verifica se está na palavra
-        else :
-            chutes.append(chute) 
-
-            if ( chute in palavra):
-                for i in palavra:
-                    if (chute ==i ):
-                        corretos +=1
+            #Caso contrário verifica se está na palavra
             else :
-                vidas -=1
-            #print(" vidas = ",vidas)
-        print("---------------------------------")
+                chutes.append(chute) 
+
+                if ( chute in palavra):
+                    for i in palavra:
+                        if (chute ==i ):
+                            corretos +=1
+                else :
+                    vidas -=1
+                #print(" vidas = ",vidas)
+            print("---------------------------------")
+        else : 
+            print("Digite somente uma letra.")
 
 
     if (vidas):
